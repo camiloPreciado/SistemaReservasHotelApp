@@ -1,0 +1,103 @@
+﻿@* @model IEnumerable<GEBIntegrador.Dominio.Usuario> *@
+@model IEnumerable<GEBIntegrador.Dto.UsuarioDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Listado de Usuarios Registrados</h1>
+
+<button class="btn btn-primary" onclick="Registrar()"> <i class="bi bi-clipboard-plus-fill"></i> Registrar usuario</button>
+
+<div class="table-responsive mt-3">
+    <table class="table" id="UserTable">
+        <thead>
+            <tr>
+                @*                <th>
+                @Html.DisplayNameFor(model => model.IdPersona)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.v_nombres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.v_apellidos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.v_correo)
+                </th>
+                @*                <th>
+                @Html.DisplayNameFor(model => model.Usuario1)
+                </th>*@
+                @*            <th>
+                @Html.DisplayNameFor(model => model.Clave)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Perfil)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.n_estado)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*                    <td>
+                @Html.DisplayFor(modelItem => item.IdPersona)
+                </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.v_nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.v_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.v_correo)
+                    </td>
+                    @*                    <td>
+                @Html.DisplayFor(modelItem => item.Usuario1)
+                </td>*@
+                    @*            <td>
+                @Html.DisplayFor(modelItem => item.Clave)
+                </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Perfil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ObtenerEstado)
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Modal" onclick="Editar(@item.n_id)"> <i class="bi bi-pencil-square"></i> </button>
+                            <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Modal" onclick="Detalles(@item.n_id)"> <i class="bi bi-eye-fill"></i> </button>
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#Modal" onclick="Eliminar(@item.n_id)"> <i class="bi bi-trash3-fill"></i> </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+ </div>
+
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="parcial">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ @section Scripts{
+
+    <script src="~/js/usuarios/usuarios.js" charset="utf-8" type="module"></script>
+
+}

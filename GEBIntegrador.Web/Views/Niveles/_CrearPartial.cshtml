@@ -1,0 +1,48 @@
+﻿@model GEBIntegrador.Dto.NivelesDto
+
+@{
+    ViewData["Title"] = "_CrearPartial";
+}
+
+<h1>Crear nivel</h1>
+
+<hr />
+<h5>¡Para el número de nivel tenga en cuenta que para sotanos son números negativos y para pisos números positivos!</h5>
+<div class="row">
+    <div class="col">
+        <form id="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="v_descripcion" class="control-label"></label>
+                <input asp-for="v_descripcion" class="form-control" />
+                <span asp-validation-for="v_descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="n_nivel" class="control-label"></label>
+                <input asp-for="n_nivel" class="form-control" />
+                <span asp-validation-for="n_nivel" class="text-danger"></span>
+            </div>
+
+
+            <hr />
+            <div class="form-group">
+                <input autocomplete="off" type="submit" value="Crear Nivel" class="btn btn-primary" />
+            </div>
+        </form>
+        @if (ViewData["Mensaje"] != null)
+        {
+            <div clas="form-group">
+                <div class="alert alert-danger" role="alert">
+                    @ViewData["Mensaje"]
+                </div>
+            </div>
+        }
+
+        <div id="error-messages" class="alert alert-danger" style="display:none;"></div>
+
+    </div>
+</div>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script src="~/js/niveles/crearnivel.js" type="module"></script>

@@ -1,0 +1,54 @@
+﻿@model GEBIntegrador.Dto.RecursoDto
+
+@{
+    ViewData["Title"] = "_DetallePartial";
+
+    
+    var listaCategoriasP = (List<SelectListItem>)ViewBag.Items;
+    var valorCategoria = Model.n_categoria_parqueadero;
+    var textoCategoria = listaCategoriasP.FirstOrDefault(item => item.Value == valorCategoria.ToString())?.Text ?? string.Empty;
+    
+    
+}
+
+<h1>Detalle recurso</h1>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form id="form" data-model='@Json.Serialize(Model)'>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="n_tipo_recurso" class="control-label">Tipo de recurso</label>
+                <input id="n_tipo_recurso" name="n_tipo_recurso" value="@Model.v_tipo_recurso" class="form-control" readonly/>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="n_nivel_recurso" class="control-label"></label>
+                <input id="n_nivel_recurso" name="n_nivel_recurso" value="@Model.v_nivel_recurso" class="form-control" readonly />
+                   
+            </div>
+
+            <div class="form-group">
+                <label asp-for="v_nombre" class="control-label">Nombre del recurso</label>
+                <input asp-for="v_nombre" class="form-control" value="@Model.v_nombre" readonly />
+            </div>
+            <div class="form-group" id="categoriaRecurso">
+                <label asp-for="n_categoria_parqueadero" class="control-label">Categoria del recurso</label>
+
+                <input id="n_categoria_parqueadero" name="textoCategoria" value="@textoCategoria" class="form-control" readonly />
+            </div>
+            <div class="form-group" id="capacidadRecurso">
+                <label asp-for="n_capacidad" class="control-label">Capacidad del recurso</label>
+                <input id="n_capacidad" name="n_capacidad" value="@Model.n_capacidad personas" class="form-control" readonly />
+            </div>
+
+            <hr />
+
+        </form>
+
+    </div>
+</div>
+
+<script src="~/js/recursos/detallesrecurso.js" type="module"></script>

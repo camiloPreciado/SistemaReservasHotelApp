@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GEBIntegrador.Dominio\GEBIntegrador.Dominio.csproj" />
+    <ProjectReference Include="..\GEBIntegrador.Dto\GEBIntegrador.Dto.csproj" />
+    <ProjectReference Include="..\GEBIntegrador.Infraestructura\GEBIntegrador.Infraestructura.csproj" />
+    <ProjectReference Include="..\GEBIntegrador.Persistencia\GEBIntegrador.Persistencia.csproj" />
+  </ItemGroup>
+
+</Project>

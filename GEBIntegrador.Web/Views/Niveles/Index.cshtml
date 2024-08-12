@@ -1,0 +1,91 @@
+﻿@model IEnumerable<GEBIntegrador.Dto.NivelesDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Gestión de niveles</h1>
+
+<button class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#Modal" onclick="Registrar()"> <i class="bi bi-clipboard-plus-fill"></i> Crear nuevo nivel</button>
+<div class="table-responsive">
+    <table class="table" id="TablaNiveles">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.n_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.v_descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.n_nivel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.n_estado)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.n_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.v_descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.n_nivel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ObtenerEstado)
+                </td>
+                <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Modal" onclick="Editar(@item.n_id)"> <i class="bi bi-pencil-square"></i> </button>
+                            <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Modal" onclick="Detalles(@item.n_id)"> <i class="bi bi-eye-fill"></i> </button>
+
+                           @*  @{
+
+                                string classbtn = "btn btn-outline-danger";
+                                string classi = "bi bi-toggle-off";
+                                string msgTooltip = "Habilitar Nivel";
+
+                                if (item.n_estado == 1)
+                                {
+                                    classbtn = "btn btn-outline-success";
+                                    classi = "bi bi-toggle-on";
+                                    msgTooltip = "Deshabilitar Nivel";
+                                }
+                            }
+
+                            <button class="@classbtn" data-bs-target="#Modal" onclick="CambiarEstado(@item.n_id,@item.n_estado)"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                    data-bs-title="@msgTooltip">
+                                <i class="@classi"></i>
+                            </button> *@
+
+                        </div>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="parcial">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/niveles/niveles.js" type="module"></script>

@@ -1,0 +1,38 @@
+﻿@model GEBIntegrador.Dto.NivelesDto
+
+@{
+    ViewData["Title"] = "_DetallePartial";
+}
+
+<h1>Detalle nivel @Model.v_descripcion</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.n_id)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.n_id)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.v_descripcion)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.v_descripcion)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.n_nivel)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.n_nivel)
+        </dd>
+         <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.n_estado)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.ObtenerEstado)
+        </dd>
+    </dl>
+</div>
+

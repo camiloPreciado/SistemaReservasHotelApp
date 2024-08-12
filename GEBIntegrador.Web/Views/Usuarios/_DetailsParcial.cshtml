@@ -1,0 +1,71 @@
+﻿@model GEBIntegrador.Dto.UsuarioDto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalle de usuario</h1>
+<div>
+    <hr />
+    @if (ViewData["Mensaje"] != null)
+    {
+        <div class="alert alert-danger text-center" role="alert">
+            @ViewData["Mensaje"]
+        </div>
+    }
+    else
+    {
+        <dl class="row">
+@*             <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IdPersona)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IdPersona)
+            </dd>
+ *@            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.v_nombres)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.v_nombres)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.v_apellidos)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.v_apellidos)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.v_correo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.v_correo)
+            </dd>
+           @*  <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.v_usuario)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.v_usuario)
+            </dd> *@
+            @*         <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.Clave)
+        </dt>
+        <dd class = "col-sm-10">
+        @Html.DisplayFor(model => model.Clave)
+        </dd> *@
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Perfil)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Perfil)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.n_estado)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ObtenerEstado)
+            </dd>
+        </dl>
+
+    }
+
+</div>

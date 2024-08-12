@@ -1,0 +1,115 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using System.Security.Claims;
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GEB Integrador</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <link href="~/lib/jquery-datatable/disc/css/jquery.datatables.css" rel="stylesheet" />
+    <link href="~/lib/jquery-datatable/disc/css/jquery.datatables.min.css" rel="stylesheet" />
+
+    <link href="~/lib/jquery-datatable-buttons/disc/css/buttons.datatables.css" rel="stylesheet" />
+    <link href="~/lib/jquery-datatable-buttons/disc/css/buttons.datatables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link href="~/lib/fullcalendar/main.css" rel="stylesheet" />
+    <link href="~/css/confirm.css" rel="stylesheet" />
+
+    @* Datepicker 1*@
+@*     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> *@
+
+    @* Datepicker 2*@
+
+    <link href="~/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/jquery.datetimepicker.css" rel="stylesheet" />
+
+    @await RenderSectionAsync("Styles", required: false)
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark custom-bg-color border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                 <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/fondo.png" class="image">
+                    Sistema de reservas hotel
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <partial name="_MenuDinamico"/>
+                    
+                        <span class="spacer"></span>
+                        @if (Context.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name) != null)
+                        {
+                            <strong class="nav-link text-white">@Context.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name).Value</strong>
+                        }
+                    
+                        @if (Context.User.Claims.FirstOrDefault(x => x.Type == "TipoPerfil") != null)
+                        {
+                            <strong class="nav-link text-white">@Context.User.Claims.FirstOrDefault(x => x.Type == "TipoPerfil").Value</strong>
+                        }
+                    
+                    
+                        <div class="dropdown">
+                            <a class="btn text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-justify"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                                @* <li><a class="nav-link text-dark" asp-area="" asp-controller="Parqueadero" asp-action="Index"><i class="bi bi-gear"></i> Cuenta</a></li> *@
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Inicio" asp-action="CerrarSesion"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                            </ul>
+                        </div>                      
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; Desarrollado por Camilo Andres Preciado Rojas
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-datetimepicker/moment.min.js"></script>
+    <script src="~/lib/jquery-datetimepicker/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/lib/jquery-datetimepicker/datetimepicker.full.js"></script>
+    <script src="~/lib/jquery-datatable/disc/js/jquery.datatables.min.js"></script>
+    <script src="~/lib/jquery-datatable-buttons/disc/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib/jquery-datatable-buttons/disc/js/buttons.jszip.min.js"></script>
+    <script src="~/lib/jquery-datatable-buttons/disc/js/buttons.html5.min.js"></script>
+    <script src="~/lib/jquery-datatable-buttons/disc/js/buttons.print.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2@11.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/fullcalendar/main.js"></script>
+    <script src="~/lib/fullcalendar/locales-all.js"></script>  
+    <script src="~/js/confirm.js"></script>
+
+ 
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

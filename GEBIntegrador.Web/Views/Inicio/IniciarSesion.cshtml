@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html style="height: 100%; width: 100%; margin: 0; padding: 0;">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ingreso</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/iniciarSesion.css" asp-append-version="true" />
+</head>
+
+<body class="d-flex align-items-center" style="height: 100%; width: 98%; margin: 0; padding: 0;">
+    <div class="justify-align-center">
+        <div class="row justify-content-end">
+            <div class="col-12 col-xl-4 col-md-4 order-2 order-md-1">
+                <div class="card bg-transparent ">
+                    <div class="card-header text-center fs-1" >
+                        Bienvenido al sistema de reservas hotel
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Inicio" asp-action="IniciarSesion" method="post">
+                            <div class="input-group mb-3">                                
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope-fill"></i>
+                                </span>                   
+                                <input class="form-control" type="text" placeholder="Correo" name="p_correo" required />
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                                <input id="passwordInput" class="form-control" type="password" placeholder="Contraseña" name="p_clave" required />
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn" style="background-color: #1F9AA5; color: #ffffff; font-weight: bold;" type="submit">Iniciar Sesión</button>
+                            </div>
+                            @if(ViewData["Mensaje"]!=null)
+                            {
+                                <div clas="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Mensaje"]
+                                    </div>
+                                </div>
+                            }
+                            <div class="text-center">¿No has activado tu cuenta? <a href="@Url.Action("Registrarse","Inicio")" style="color: #4FA0CA">Actívala</a></div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-7 col-md-8 order-1 order-md-2 d-flex align-items-center p-0 m-0">
+                    <img src="~/images/logo.jpeg" class="image">
+            </div>
+        </div>
+    </div>
+
+
+    
+
+</body>
+</html>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("passwordInput");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>

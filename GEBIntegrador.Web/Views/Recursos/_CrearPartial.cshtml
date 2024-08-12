@@ -1,0 +1,82 @@
+﻿@model GEBIntegrador.Dto.RecursoDto
+
+@{
+    ViewData["Title"] = "_CrearPartial";
+
+    List<SelectListItem> listaCategoriasP = (List<SelectListItem>)ViewBag.Items;
+    List<SelectListItem> listaTiposRecurso = (List<SelectListItem>)ViewBag.tipos;
+    
+}
+
+
+<h1>Crear nuevo recurso</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form id="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="n_tipo_recurso" class="control-label">Tipo de recurso</label>
+                <select id="n_tipo_recurso" name="n_tipo_recurso" class="form-control" onchange="tipoRecursoElegido()">
+                    <option value="">--Elija un tipo de recurso-- </option>
+                    @foreach (var tipoRecurso in listaTiposRecurso)
+                    {
+                        <option value="@tipoRecurso.Value">@tipoRecurso.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="n_tipo_recurso" class="text-danger"></span>
+            </div> 
+
+             <div class="form-group">
+                <label asp-for="n_nivel_recurso" class="control-label"></label>
+                <select id="n_nivel_recurso" name="n_nivel_recurso" class="form-control">
+                    <option value="">--Elija un nivel-- </option>
+                </select>
+                <span asp-validation-for="n_nivel_recurso" class="text-danger"></span>
+            </div> 
+            
+            <div class="form-group">
+                <label asp-for="v_nombre" class="control-label">Nombre del recurso</label>
+                <input asp-for="v_nombre" class="form-control" />
+                <span asp-validation-for="v_nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="categoriaRecurso">
+                <label asp-for="n_categoria_parqueadero" class="control-label">Categoria del recurso</label>
+                <select id="n_categoria_parqueadero" name="n_categoria_parqueadero" class="form-control">
+                    <option value="">--Elija una categoria-- </option>
+                    @foreach (SelectListItem categoria in listaCategoriasP)
+                    {
+                        <option value="@categoria.Value">@categoria.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="n_categoria_parqueadero" class="text-danger"></span>
+             </div>
+            <div class="form-group" id="capacidadRecurso">
+                <label asp-for="n_capacidad" class="control-label">Capacidad del recurso</label>
+                <input asp-for="n_capacidad" class="form-control" type="number" min="1"/>
+                <span asp-validation-for="n_capacidad" class="text-danger"></span>
+            </div>
+            
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Crear Recurso" class="btn btn-primary" />
+            </div>
+        </form>
+        @if (ViewData["Mensaje"] != null)
+        {
+            <div clas="form-group">
+                <div class="alert alert-danger" role="alert">
+                    @ViewData["Mensaje"]
+                </div>
+            </div>
+        }
+
+        <div id="error-messages" class="alert alert-danger" style="display:none;"></div>
+    </div>
+</div>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script src="~/js/recursos/crearrecurso.js" type="module"></script>
