@@ -17,3 +17,8 @@ Después de clonar el proyecto, sigue los siguientes pasos para configurar y eje
 
 4. **Ejecutar el Proyecto:**
    - Una vez realizados los pasos anteriores, ejecuta el proyecto desde Visual Studio.
+  
+## Usuarios de Prueba
+- prueba@gmail.com
+- prueba2@gmail.com
+- Contraseña de ambas cuentas (Prueba123)
